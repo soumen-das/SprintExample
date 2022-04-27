@@ -1,0 +1,40 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="dateFormat" class="java.text.SimpleDateFormat">
+		<constructor-arg value="yyyy-MM-dd" />
+	</bean>
+	<bean id="addrSoumen" class="eric.com.example.Address">
+		<property name="city" value="Kolkata" />
+		<property name="state" value="WB" />
+		<property name="pin" value="700065" />
+	</bean>
+	<bean id="addrProsenjit" class="eric.com.example.Address">
+		<property name="city" value="Kolkata" />
+		<property name="state" value="WB" />
+		<property name="pin" value="700051" />
+	</bean>
+	<bean id="studentSoumen" class="eric.com.example.Student">
+		<property name="id" value="101" />
+		<property name="name" value="Soumen" />
+		<property name="mobile" value="9898989898" />
+		<property name="doj">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="2021-03-01" />
+			</bean>
+		</property>
+		<property name="addr" ref="addrSoumen" />
+	</bean>
+	<bean id="studentProsenjit" class="eric.com.example.Student">
+		<property name="id" value="102" />
+		<property name="name" value="Prosenjit" />
+		<property name="mobile" value="8989898989" />
+		<property name="doj">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="2022-03-21" />
+			</bean>
+		</property>
+		<property name="addr" ref="addrProsenjit" />
+	</bean>
+</beans>
